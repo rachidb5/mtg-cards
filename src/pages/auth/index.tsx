@@ -1,4 +1,5 @@
-import LoginForm from "@/components/organismes/LoginForm";
+'use client'
+import LoginForm from "@/components/organisms/LoginForm";
 
 export default function Page() {
   return(

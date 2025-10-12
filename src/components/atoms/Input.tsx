@@ -1,32 +1,17 @@
 "use client";
 
-import { InputProps, InputLabel, FormControl, TextField } from "@mui/material";
-import { forwardRef } from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 
-type Props = InputProps & {
+type Props = {
   label?: string;
-};
+} & InputHTMLAttributes<HTMLInputElement>; // herda as props padrão do <input>
 
 const CustomInput = forwardRef<HTMLInputElement, Props>(
-  ({ label }, ref) => (
-    <FormControl>
-      {label && (
-        <InputLabel
-          style={{
-            display: "block",
-            marginBottom: 4,
-            fontSize: 14,
-            color: "#555",
-          }}
-        >
-          {label}
-        </InputLabel>
-      )}
-      <TextField ref={ref} />
-    </FormControl>
+  ({  ...rest }, ref) => (
+    <input ref={ref} {...rest} />
   )
 );
 
-CustomInput.displayName = "CustomInput"; // importante no Next.js
+CustomInput.displayName = "CustomInput"; // necessário no Next.js com forwardRef
 
 export default CustomInput;
