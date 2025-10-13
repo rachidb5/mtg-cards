@@ -3,7 +3,7 @@ import LoginForm from "@/components/organisms/LoginForm";
 
 export default function Page() {
   return(
-    <div>
+    <div className="grid justify-items-center mt-70">
       <LoginForm/>
     </div>
   )
