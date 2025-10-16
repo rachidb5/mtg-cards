@@ -57,6 +57,8 @@ const { login, data, error, loading, isSuccess } = useLogin();
           <CustomFormField
             {...register("email")}
             label={"Acesso"}
+            data-testid="acesso"
+            testIdLabel="acesso-label"
             type="text"
             className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
           />
@@ -66,6 +68,8 @@ const { login, data, error, loading, isSuccess } = useLogin();
           <CustomFormField
             {...register("password")}
             label={"Senha"}
+            data-testid="password"
+            testIdLabel="password-label"
             type="password"
             className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
           />
