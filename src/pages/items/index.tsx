@@ -9,7 +9,7 @@ const URL = 'https://api.magicthegathering.io/v1/cards'
 const OPTIONS: RequestInit = {
   method: "GET", // opcional, GET é padrão
 }
-export default function Page() {
+export default function ListPage() {
   type Card = {
   name: string;
   type: string;
@@ -31,7 +31,7 @@ type ApiResponse = {
     console.log(data)
     return (
     <div className="p-8">
-      <h1 className="text-xl font-bold mb-4">Lista</h1>
+      <h1 className="text-xl font-bold mb-4" data-testid="title">Lista</h1>
       <TableData columns={columns} rows={data.cards} />
     </div>
      
