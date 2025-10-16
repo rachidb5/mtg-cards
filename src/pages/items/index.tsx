@@ -28,7 +28,6 @@ type ApiResponse = {
     return <p>An error occurred: {error.message}</p>;
   }
   if (data) {
-    console.log(data)
     return (
     <div className="p-8">
       <h1 className="text-xl font-bold mb-4" data-testid="title">Lista</h1>
