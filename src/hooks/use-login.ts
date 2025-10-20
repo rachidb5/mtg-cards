@@ -1,16 +1,16 @@
 // hooks/useLogin.ts
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import useFetch from './use-fetch';
 
 interface LoginRequest {
-  email: string;
+  username: string;
   password: string;
 }
 
 interface LoginResponse {
   user: {
     id: string;
-    email: string;
+    username: string;
     name: string;
   };
   token: string;
@@ -18,26 +18,26 @@ interface LoginResponse {
 
 export function useLogin() {
   const [loginData, setLoginData] = useState<LoginRequest | null>(null);
-  
-  const { data, error, loading } = useFetch<LoginResponse>(
-    loginData ? '/api/auth/login' : '',
-    loginData ? {
+
+  const options = useMemo(() => {
+    if (!loginData) return undefined;
+    return {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(loginData),
-    } : undefined
+    };
+  }, [loginData]);
+
+  const { data, error, loading } = useFetch<LoginResponse>(
+    'https://dummyjson.com/auth/login',
+    options
   );
 
   const login = (credentials: LoginRequest) => {
     setLoginData(credentials);
   };
 
-  // Reset do hook
-  const reset = () => {
-    setLoginData(null);
-  };
+  const reset = () => setLoginData(null);
 
   return {
     login,

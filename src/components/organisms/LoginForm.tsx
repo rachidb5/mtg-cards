@@ -18,7 +18,7 @@ const { login, data, error, loading, isSuccess } = useLogin();
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   });
@@ -29,12 +29,12 @@ const { login, data, error, loading, isSuccess } = useLogin();
       login(data)
       // const result = useLogin(data)
 
-      // if (result.success) {
+       if (isSuccess) {
       //   // Login bem-sucedido - redirecionar ou salvar token
-      //   console.log("Login realizado:", result.user);
-      // } else {
-      //   console.log(result.message || "Erro ao fazer login");
-      // }
+         console.log("Login realizado:", error);
+      } else {
+         console.log(data || "Erro ao fazer login");
+       }
     } catch (error) {
       console.error("Login error:", error);
     }
@@ -55,15 +55,15 @@ const { login, data, error, loading, isSuccess } = useLogin();
       >
         <form onSubmit={handleSubmit(onSubmit)}>
           <CustomFormField
-            {...register("email")}
+            {...register("username")}
             label={"Acesso"}
             data-testid="acesso"
             testIdLabel="acesso-label"
             type="text"
             className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
           />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+              {errors.username && (
+                <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
               )}
           <CustomFormField
             {...register("password")}
