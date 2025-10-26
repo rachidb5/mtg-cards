@@ -6,6 +6,7 @@ import { Card, CardContent, CardActions, Box, Button, Typography } from "@mui/ma
 type CardCustomProps = {
   title?: string;
   subtitle?: string;
+  width?: string;
   actionLabel?: string;
   onActionClick?: () => void;
   children?: React.ReactNode; // conteúdo customizável dentro do card
@@ -14,6 +15,7 @@ type CardCustomProps = {
 const CardCustom: React.FC<CardCustomProps> = ({
   title,
   subtitle,
+  width,
   actionLabel,
   onActionClick,
   children,
@@ -22,7 +24,7 @@ const CardCustom: React.FC<CardCustomProps> = ({
     <Card
       sx={{
         minWidth: 275,
-        maxWidth: "20vw",
+        width: width,
         p: 2,
         display: "flex",
         flexDirection: "column",

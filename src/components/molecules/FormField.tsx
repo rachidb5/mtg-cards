@@ -1,8 +1,8 @@
 "use client";
 
 import { forwardRef, InputHTMLAttributes } from "react";
-import CustomInput from "../atoms/Input";
-import CustomLabel from "../atoms/Label";
+import CustomInput from "../ui/Input";
+import CustomLabel from "../ui/Label";
 
 type Props = {
   label: string; // geralmente obrigatório em um campo de formulário

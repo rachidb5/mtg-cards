@@ -1,6 +1,6 @@
 "use client";
-import { TableRow } from "../atoms/TableRow";
-import { TableCell } from "../atoms/TableCell";
+import { TableRow } from "../ui/TableRow";
+import { TableCell } from "../ui/TableCell";
 
 type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

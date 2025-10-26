@@ -1,5 +1,5 @@
 "use client";
-import { Table } from "../atoms/Table";
+import { Table } from "../ui/Table";
 import { TableHeader } from "../molecules/TableHeader";
 import { TableRowItem } from "../molecules/TableRowItem";
 
