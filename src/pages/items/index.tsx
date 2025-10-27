@@ -1,6 +1,9 @@
 "use server";
 import { TableData } from "@/components/organisms/TableData";
+import { ThemeSwitch } from "@/components/ui/ThemeSwitch";
 import useFetch from "@/hooks/use-fetch";
+import { Stack, Typography, useTheme } from "@mui/material";
+import Container from '@mui/material/Container';
 
 const columns = ["name", "type"];
 
@@ -15,7 +18,7 @@ export default function ListPage() {
   type: string;
   // adicione outros campos se quiser
 };
-
+const { Theme } = useTheme() as { Theme: string; toggleTheme: () => void };
 type ApiResponse = {
   cards: Card[];
 };
@@ -29,10 +32,16 @@ type ApiResponse = {
   }
   if (data) {
     return (
-    <div className="p-8">
-      <h1 className="text-xl font-bold mb-4" data-testid="title">Lista</h1>
+    <Container>
+         <Stack spacing={1}>
+        <div className="absolute top-2 right-4">
+          <ThemeSwitch />
+          {Theme}
+        </div>
+      </Stack>
+      <Typography variant="h4">Lista</Typography>
       <TableData columns={columns} rows={data.cards} />
-    </div>
+    </Container>
      
     );
   }
